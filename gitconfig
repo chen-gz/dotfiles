@@ -1,0 +1,13 @@
+[user]
+	email = guangzong@pitt.edu
+	name = Guangzong Chen
+	signingkey = 095389BACAE97D19
+[diff]
+	tool = meld
+[init]
+	defaultBranch = master
+[core]
+	symlink = true
+	autocrlf = input
+[commit]
+	gpgsign = true
