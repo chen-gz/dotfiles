@@ -1,0 +1,14 @@
+[user]
+	name = Guangzong Chen
+	email = chen@ggeta.com
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = master
+[core]
+	autocrlf = input
+	filemode = false
+[pull]
+	ff = only
+[diff]
+	tool = nvimdiff
