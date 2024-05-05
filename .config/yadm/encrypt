@@ -2,3 +2,4 @@
 .config/wireguard/*
 .mcli/config.json
 .restic-env
+.kaggle/kaggle.json
