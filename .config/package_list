@@ -1,29 +1,4 @@
-git
-alacritty
-ansible
-base
-base-devel
-bspwm
-dhcpcd
-docker
-docker-compose
-efibootmgr
-firefox
-fish
-grub
-hdparm
-linux-firmware
-neovim
-nix
-nvidia
-openssh
-pacutils
-picom
-polybar
-rofi
-sddm
-sxhkd
-ttf-jetbrains-mono-nerd
-xorg-xrandr
-yadm
-feh
+git alacritty ansible base base-devel bspwm dhcpcd docker docker-compose efibootmgr
+firefox fish grub hdparm linux-firmware neovim nix nvidia openssh pacutils picom
+polybar rofi sddm sxhkd ttf-jetbrains-mono-nerd xorg-xrandr yadm feh wget wqy-zenhei
+doublecmd-qt6
