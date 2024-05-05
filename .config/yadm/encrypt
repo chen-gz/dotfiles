@@ -1,3 +1,4 @@
 .ssh/*
 .config/wireguard/*
 .mcli/config.json
+.restic-env
