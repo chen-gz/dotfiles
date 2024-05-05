@@ -5,11 +5,11 @@ polybar main &
 polybar sidebar &
 picom --config ~/.config/picom/picom.conf &
 
-feh --bg-fill /home/zong/Pictures/flatppuccin_4k_macchiato.png &
+feh --bg-fill ~/Pictures/arch-black-4k.png &
 
 bspc monitor DP-0 -d 1 2 3 4 5
 bspc monitor HDMI-0 -d 6 7 8 9
-xrandr --output DP-0 --primary --auto --output HDMI-0 --auto --rotate left --right-of DP-0
+xrandr --output DP-0 --primary --auto --output HDMI-0 --auto --right-of DP-0
 # bspc wm -O DP-0 HDMI-0
 
 bspc config border_width 0
