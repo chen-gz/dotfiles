@@ -35,3 +35,11 @@ yadm
 pulseaudio
 telegram-desktop
 wireguard-tools
+qt6-svg
+qt6-declarative
+fuse2
+fcitx5
+fcitx5-qt
+fcitx5-gtk
+fcitx5-configtool
+fcitx5-rime
