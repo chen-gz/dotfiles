@@ -43,3 +43,14 @@ fcitx5-qt
 fcitx5-gtk
 fcitx5-configtool
 fcitx5-rime
+rustup
+unzip
+pacman-contrib
+baobab
+nodejs
+xclip
+lazygit
+lximage-qt
+flameshot
+touchegg
+xorg-xinput
