@@ -14,3 +14,5 @@
 	tool = nvimdiff
 [merge]
 	tool = nvimdiff
+[gui]
+    skipDiscardChangesWarning = true

@@ -54,3 +54,4 @@ lximage-qt
 flameshot
 touchegg
 xorg-xinput
+diff-so-fancy

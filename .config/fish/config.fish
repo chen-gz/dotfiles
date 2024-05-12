@@ -4,6 +4,7 @@ if status is-interactive
 end
 
 fish_add_path ~/.nix-profile/bin
+fish_add_path ~/.cargo/bin
 export GPG_TTY=$(tty) ## for gpg and alacritty
 
 alias wgup='sudo systemctl start wg-quick@wg0'
