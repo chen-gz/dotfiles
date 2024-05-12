@@ -1,0 +1,6 @@
+python-click
+python-pytorch-cuda
+python-distutils-extra
+python-psutil
+ninja
+google-glog
