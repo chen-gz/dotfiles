@@ -1,0 +1,5 @@
+gui:
+  skipDiscardChangeWarning: true
+  paging:
+    colorArg: always
+    pager: diff-so-fancy
