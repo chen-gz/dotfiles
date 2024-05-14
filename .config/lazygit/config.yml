@@ -1,6 +1,7 @@
 gui:
   skipDiscardChangeWarning: true
+
 git:
   paging:
     colorArg: always
-    pager: diff-so-fancy
+    pager: delta --dark --paging=never

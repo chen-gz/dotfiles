@@ -54,4 +54,8 @@ lximage-qt
 flameshot
 touchegg
 xorg-xinput
-diff-so-fancy
+git-delta
+texlive
+zathura
+zathura-pdf-poppler
+rubber

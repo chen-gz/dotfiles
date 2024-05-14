@@ -4,10 +4,11 @@
 [commit]
 	gpgsign = true
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [core]
 	autocrlf = input
 	filemode = false
+	pager = delta
 [pull]
 	ff = only
 [diff]
@@ -16,3 +17,12 @@
 	tool = nvimdiff
 [gui]
     skipDiscardChangesWarning = true
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+[delta]
+    navigate = true    
+    light = false      
+    side-by-side = true  
+    line-numbers = true   
+    features = decorations	
