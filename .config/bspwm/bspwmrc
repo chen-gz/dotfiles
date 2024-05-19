@@ -3,6 +3,7 @@
 pgrep -x sxhkd >/dev/null || sxhkd &
 polybar main &
 polybar sidebar &
+touchegg &
 picom --config ~/.config/picom/picom.conf &
 
 feh --bg-fill ~/Pictures/arch-black-4k.png &
