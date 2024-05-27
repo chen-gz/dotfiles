@@ -63,3 +63,5 @@ clang
 yarn
 meld
 sassc
+remmina
+libvncserver
