@@ -8,6 +8,7 @@ fish_add_path ~/.nix-profile/bin
 fish_add_path ~/.local/bin
 fish_add_path ~/.cargo/bin/
 fish_add_path /home/guangzong/.local/share/JetBrains/Toolbox/scripts
+fish_add_path /opt/homebrew/bin
 export GPG_TTY=$(tty) ## for gpg and alacritty
 
 alias wgup='sudo systemctl start wg-quick@wg0'
