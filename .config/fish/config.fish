@@ -12,7 +12,6 @@ export GPG_TTY=$(tty) ## for gpg and alacritty
 
 alias wgup='sudo systemctl start wg-quick@wg0'
 alias wgdown='sudo systemctl stop wg-quick@wg0'
-alias nixdev='nix-shell -p yadm git gnupg --run fish'
 alias dr='devbox run'
 alias ds='devbox shell'
 alias py11='source ~/.local/share/python311/bin/activate.fish'
