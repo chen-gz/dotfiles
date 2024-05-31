@@ -62,3 +62,8 @@ libvncserver
 restic
 ninja
 fd
+pyright
+neovide
+s3fs-fuse
+rclone
+fuse3
