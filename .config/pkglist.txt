@@ -1,7 +1,5 @@
 alacritty
 ansible
-base
-base-devel
 bspwm
 dhcpcd
 docker
@@ -11,13 +9,9 @@ efibootmgr
 feh
 firefox
 fish
-git
 grub
 hdparm
-linux
-linux-firmware
 neovim
-nix
 nvidia
 openssh
 pacutils
@@ -66,9 +60,5 @@ sassc
 remmina
 libvncserver
 restic
-python-click
-python-pytorch-cuda
-python-distutils-extra
-python-psutil
 ninja
-python-pip
+fd
