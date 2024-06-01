@@ -1,0 +1,3 @@
+#! /bin/bash
+source /home/guangzong/.restic-env
+restic backup --files-from /home/guangzong/.backup/system_files --tag sys_conf
