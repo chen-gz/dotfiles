@@ -4,5 +4,6 @@
 /etc/sddm.conf
 /etc/wireguard/wg0.conf
 /usr/share/sddm/themes/catppuccin-macchiato/
+/etc/environment
 
 

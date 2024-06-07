@@ -67,3 +67,7 @@ neovide
 s3fs-fuse
 rclone
 fuse3
+mlocate
+klayout
+htop
+cmake
