@@ -27,4 +27,14 @@ set -U -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 set -x GPG_TTY (tty)
 
 # Start or re-use a gpg-agent.
-gpg-connect-agent updatestartuptty /bye >/dev/null
+
+# if hostname = gpc then do following
+# gpg-connect-agent updatestartuptty /bye >/dev/null
+if hostnamectl hostname | grep -q gpc
+    set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+    set -x GPG_TTY (tty)
+    gpg-connect-agent updatestartuptty /bye >/dev/null
+end
+
+
+
