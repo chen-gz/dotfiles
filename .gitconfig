@@ -2,7 +2,7 @@
 	name = Guangzong Chen
 	email = chen@ggeta.com
 [commit]
-	# gpgsign = true
+	gpgsign = true
 [init]
 	defaultBranch = main
 [core]
