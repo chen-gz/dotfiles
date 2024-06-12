@@ -71,3 +71,5 @@ mlocate
 klayout
 htop
 cmake
+blueman
+pipewire-pulse

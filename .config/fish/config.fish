@@ -38,3 +38,10 @@ end
 
 
 
+function gpgsign
+    for file in $argv
+        set output (string replace -r '(\.[^.]+)$' '.gpg$1' $file)
+        gpg --output $output --sign $file
+    end
+end
+
