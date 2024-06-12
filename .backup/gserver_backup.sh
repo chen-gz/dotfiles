@@ -1,4 +1,5 @@
 # backup nginx and let's encrypt
+source /home/zong/.restic-env
 echo "backup nginx"
 restic backup /etc/nginx /etc/letsencrypt/  --tag nginx
 
