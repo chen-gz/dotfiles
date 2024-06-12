@@ -1,5 +1,6 @@
 # !/bin/bash
 # The script is simple. It clones the repositories to a temporary directory, then uses  restic  to backup the repositories. 
+source /home/guangzong/.restic-env
 git clone --mirror git@github.com:chen-gz/stm32u5lib.git /tmp/repos/stm32u5lib.git
 git clone --mirror git@github.com:chen-gz/serial_comm_tool.git /tmp/repos/serial_comm_tool.git
 git clone --mirror git@github.com:chen-gz/gb.git /tmp/repos/gb.git
