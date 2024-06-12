@@ -2,13 +2,10 @@
 .ssh/config
 .ssh/id_ed25519
 .ssh/id_ed25519.pub
-.ssh/known_hosts
-
 .config/wireguard/*
 .mcli/config.json
 .mc/config.json
 .restic-env
 .kaggle/kaggle.json
-
 .passwd-s3fs
 .config/rclone/rclone.conf
