@@ -73,3 +73,6 @@ htop
 cmake
 blueman
 pipewire-pulse
+opensc
+thunderbird
+gpgme
