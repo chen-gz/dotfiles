@@ -76,3 +76,4 @@ pipewire-pulse
 opensc
 thunderbird
 gpgme
+lua-language-server
