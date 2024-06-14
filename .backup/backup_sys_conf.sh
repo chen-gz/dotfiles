@@ -7,4 +7,6 @@ restic backup --tag sys_conf                                \
               /etc/sddm.conf                                \
               /etc/wireguard/wg0.conf                       \
               /usr/share/sddm/themes/catppuccin-macchiato/  \
-              /etc/environment                              
+              /etc/environment                              \
+              /etc/ssh/sshd_config                          
+    
