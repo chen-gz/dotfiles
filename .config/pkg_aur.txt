@@ -1,0 +1,5 @@
+paru
+python311
+zed-git
+zoom
+goldendict-ng
