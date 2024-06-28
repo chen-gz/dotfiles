@@ -77,3 +77,4 @@ opensc
 thunderbird
 gpgme
 lua-language-server
+trash-cli
