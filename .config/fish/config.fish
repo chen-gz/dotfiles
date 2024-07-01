@@ -30,11 +30,20 @@ set -x GPG_TTY (tty)
 
 # if hostname = gpc then do following
 # gpg-connect-agent updatestartuptty /bye >/dev/null
-if hostnamectl hostname | grep -q gpc
-    set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
-    set -x GPG_TTY (tty)
-    gpg-connect-agent updatestartuptty /bye >/dev/null
+
+# if in linux system, then do following
+if test (uname) = "Linux"
+    if hostnamectl hostname | grep -q gpc
+        set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+        set -x GPG_TTY (tty)
+        gpg-connect-agent updatestartuptty /bye >/dev/null
+    end
 end
+if test (uname) = "Darwin"
+     set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+     set -x GPG_TTY (tty)
+     gpg-connect-agent updatestartuptty /bye >/dev/null
+ end
 
 
 
