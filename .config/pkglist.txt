@@ -79,3 +79,6 @@ gpgme
 lua-language-server
 trash-cli
 sdcv
+octave
+texlab
+gdm

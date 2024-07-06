@@ -5,6 +5,7 @@ polybar main &
 polybar sidebar &
 touchegg &
 blueman-applet &
+goldendict &
 picom --config ~/.config/picom/picom.conf &
 
 feh --bg-fill ~/Pictures/arch-black-4k.png &

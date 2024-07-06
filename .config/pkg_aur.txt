@@ -5,3 +5,4 @@ zoom
 goldendict-ng
 slack-desktop
 sublime-merge
+cosmic-epoch-git
