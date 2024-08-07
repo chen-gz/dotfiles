@@ -33,7 +33,9 @@ alias cdd='cd ~/Documents'
 
 # if in linux system, then do following
 if test (uname) = "Linux"
-    if hostnamectl hostname | grep -q gpc
+	# if hostnamectl hostname | grep -q gpc
+	# if hostnamectl hostname | grep -q -e gpc -e gwin; then
+    if hostnamectl hostname | grep -q -e gpc -e gwin
         set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
         set -x GPG_TTY (tty)
         gpg-connect-agent updatestartuptty /bye >/dev/null
