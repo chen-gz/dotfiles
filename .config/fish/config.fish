@@ -15,7 +15,7 @@ alias wgup='sudo systemctl start wg-quick@wg0'
 alias wgdown='sudo systemctl stop wg-quick@wg0'
 alias dr='devbox run'
 alias ds='devbox shell'
-alias py11='source ~/.local/share/python311/bin/activate.fish'
+alias py11='source ~/.local/share/python311/bin/activate.fish && set -x CC gcc-13'
 alias py12='source ~/.local/share/python312/bin/activate.fish'
 alias cdd='cd ~/Documents'
 
