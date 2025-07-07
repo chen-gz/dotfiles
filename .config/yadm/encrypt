@@ -2,6 +2,4 @@
 .mcli/config.json
 .mc/config.json
 .restic-env
-.kaggle/kaggle.json
-.passwd-s3fs
 .config/rclone/rclone.conf

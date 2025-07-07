@@ -8,7 +8,6 @@
 [core]
 	autocrlf = input
 	filemode = false
-	pager = delta
 [pull]
 	ff = only
 [diff]
@@ -18,11 +17,10 @@
 [gui]
     skipDiscardChangesWarning = true
 
-[interactive]
-    diffFilter = delta --color-only --features=interactive
-[delta]
-    navigate = true    
-    light = false      
-    side-by-side = true  
-    line-numbers = true   
-    features = decorations	
+[safe]
+	directory = /tmp/aes_dec
+	directory = /tmp/eb_cmdline
+	directory = /tmp/eb_cmds
+	directory = /tmp/ebutton_ble
+	directory = /tmp/esp32_cam
+	directory = /tmp/electrode
