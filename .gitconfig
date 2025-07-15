@@ -17,10 +17,3 @@
 [gui]
     skipDiscardChangesWarning = true
 
-[safe]
-	directory = /tmp/aes_dec
-	directory = /tmp/eb_cmdline
-	directory = /tmp/eb_cmds
-	directory = /tmp/ebutton_ble
-	directory = /tmp/esp32_cam
-	directory = /tmp/electrode

@@ -47,8 +47,6 @@ if test (uname) = "Darwin"
      gpg-connect-agent updatestartuptty /bye >/dev/null
  end
 
-
-
 function gpgsign
     for file in $argv
         set output (string replace -r '(\.[^.]+)$' '.gpg$1' $file)
@@ -57,3 +55,18 @@ function gpgsign
 end
 
 fish_add_path /Library/TeX/texbin
+
+if test -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+  source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
+end
+
+
+function fish_right_prompt
+  # 检查是否在 Nix Shell 环境中
+  if set -q IN_NIX_SHELL
+    # 设置颜色（例如蓝色），打印 (nix)，然后恢复正常颜色
+    set_color -o blue
+    echo '(nix)'
+    set_color normal
+  end
+end
