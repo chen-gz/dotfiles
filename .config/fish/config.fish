@@ -8,7 +8,7 @@ fish_add_path /opt/homebrew/bin
 # GPG and SSH agent setup
 set -x GPG_TTY (tty)
 if test (uname) = "Darwin"
-    # gpgconf --kill gpg-agent
+    gpgconf --kill gpg-agent
     set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
     gpg-connect-agent updatestartuptty /bye >/dev/null
 else if test (uname) = "Linux"
@@ -21,3 +21,6 @@ end
 
 # Aliases
 alias cdd='cd ~/Documents'
+
+# Brew update
+brew update &> /dev/null &
