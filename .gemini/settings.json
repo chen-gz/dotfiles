@@ -1,6 +1,8 @@
 {
+  "ide": {
+    "hasSeenNudge": true
+  },
   "tools": {
-    "sandbox": true
   },
   "security": {
     "auth": {
