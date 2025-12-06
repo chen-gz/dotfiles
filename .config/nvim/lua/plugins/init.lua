@@ -6,9 +6,12 @@ return {
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
-        init = function()
+        config = function(_, opts)
             vim.o.timeout = true
             vim.o.timeoutlen = 300
+            require("which-key").setup(opts)
+            vim.keymap.set("n", "<leader>j", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
+            vim.keymap.set("n", "<leader>k", function() vim.diagnostic.goto_prev() end, { desc = "Previous Diagnostic" })
         end,
         opts = {
             -- your configuration comes here
@@ -72,6 +75,50 @@ return {
         "tpope/vim-fugitive",
     },
 
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                keymaps = {
+                    visual = "s",
+                },
+            })
+        end
+    },
+
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        config = function()
+            require("toggleterm").setup({
+                direction = "float",
+                float_opts = {
+                    border = "curved",
+                },
+                close_on_exit = true,
+                terminal_mappings = true,
+            })
+
+            local Terminal = require("toggleterm.terminal").Terminal
+            local float_term = Terminal:new({
+                direction = "float",
+                count = 1,
+            })
+
+            function _G.toggle_float()
+                float_term:toggle()
+            end
+
+            vim.keymap.set({"n", "t"}, "<leader>t", "<cmd>lua toggle_float()<CR>", {
+                noremap = true,
+                silent = true,
+                desc = "Toggle floating terminal",
+            })
+        end,
+    },
+
     -- LazyGils 
     {
         "kdheepak/lazygit.nvim",
@@ -111,7 +158,7 @@ return {
                     ignore = false, 
                 },
             })
-            vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+            vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
         end,
     },
     -- Start page

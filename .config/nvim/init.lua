@@ -73,13 +73,3 @@ vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>tf", ":NvimTreeFindFile<CR>", { desc = "Find current file in NvimTree" })
 
-
-function Run_just_command()
-  local command = vim.fn.input("just ")
-  if command and command ~= "" then
-    local just_term = Terminal:new({ cmd = "just " .. command, hidden = true, direction = "float" })
-    just_term:toggle()
-  end
-end
-
-vim.keymap.set("n", "<leader>j", Run_just_command, { desc = "Run just command in floating terminal" })
