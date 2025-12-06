@@ -1,14 +1,28 @@
 -- lua/plugins/init.lua
 
+-- -- completion start qq
 return {
+    -- whichkey
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    },
     -- Colorscheme
     {
         "catppuccin/nvim",
         name = "catppuccin",
         lazy = false,
-        priority = 1000,
-        config = function()
-            vim.cmd("colorscheme catppuccin")
+        priority = 1000, config = function()
+            vim.cmd("colorscheme catppuccin-frappe")
         end,
     },
 
@@ -96,24 +110,10 @@ return {
                     -- This is the key setting to show files ignored by Git
                     ignore = false, 
                 },
-                -- filters = {
-                --     ignore = false,
-                --     custom = { "gitignore" },
-                -- },
             })
             vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
         end,
     },
-
-    -- Project management
-    -- {
-    --     "ahmedkhalf/project.nvim",
-    --     config = function()
-    --         require("project_nvim").setup({})
-    --         require('telescope').load_extension('projects')
-    --     end,
-    -- },
-
     -- Start page
     {
         'goolord/alpha-nvim',
@@ -155,7 +155,7 @@ return {
             -- recommended options for the best experience
             vim.opt.laststatus = 3 -- make statusline always visible
             vim.opt.cmdheight = 0 -- hide command line area
-            
+
             require("noice").setup({
                 lsp = {
                     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -176,4 +176,97 @@ return {
             })
         end,
     },
+    -- Blink.cmp 配置 (保持你的原有逻辑，稍作优化)
+    {
+        "saghen/blink.cmp",
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            "saghen/blink.compat", -- 兼容层
+        },
+        version = '1.*', -- 建议使用 v0.* 除非你确定 v1 不会破坏配置
+        opts = {
+            -- keymap = { preset = 'default' },
+            keymap = {
+                ['<Tab>'] = { 'select_and_accept', 'fallback' },
+                ['<CR>'] = { 'select_and_accept', 'fallback' },
+            },
+
+            appearance = {
+                use_nvim_cmp_as_default = true, 
+                nerd_font_variant = 'mono'
+            },
+
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+                providers = {
+                    lsp = {
+                        name = 'LSP',
+                        module = 'blink.cmp.sources.lsp',
+                    },
+                },
+            },
+            signature = { enabled = true }
+        },
+    },
+
+    -- LSP Config (简单的占位符，确保 lsp 源有效)
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            -- 在这里设置你的 LSP，例如：
+            -- require('lspconfig').lua_ls.setup({})
+        end,
+    },
+    -- nvim-notify 配置
+    {
+        "rcarriga/nvim-notify",
+        config = function()
+            require("notify").setup({
+                background_colour = "#000000",
+            })
+        end,
+    },
+
+    -- Formatter
+    {
+        "stevearc/conform.nvim",
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        keys = {
+            {
+                "<leader>lf",
+                function()
+                    require("conform").format({ async = true, lsp_fallback = true })
+                end,
+                mode = "",
+                desc = "Format buffer",
+            },
+        },
+        opts = {
+            formatters_by_ft = {
+                markdown = { "prettier" },
+                tex = { "latexindent" },
+            },
+            format_on_save = function(bufnr)
+                if vim.bo[bufnr].filetype == "markdown" or vim.bo[bufnr].filetype == "tex" then
+                    return { timeout_ms = 500, lsp_fallback = true }
+                end
+            end,
+            formatters = {
+                latexindent = {
+                    -- 添加这些参数来禁止生成日志和备份
+                    -- "-g /dev/null" 禁止生成 indent.log
+                    -- "-y=defaultPoly:1" 是一个常用 hack，但关键是我们要覆盖 backup 设置
+                    -- 我们可以尝试通过 YAML 参数覆盖：
+                    prepend_args = { "-c", ".latexindent", "-y='lineWidth: 120'"},
+                    -- args = { "-l", "-w", "-y='lineWidth:120'" },
+                },
+            },
+        },
+        init = function()
+            -- If you want the formatexpr, here is the place to set it
+            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+        end,
+    },
+
 }
