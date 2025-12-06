@@ -4,6 +4,7 @@ return {
     -- Colorscheme
     {
         "catppuccin/nvim",
+        name = "catppuccin",
         lazy = false,
         priority = 1000,
         config = function()
@@ -37,16 +38,18 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
-                sync_install = false,
-                auto_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-            })
+        event = { "BufReadPre", "BufNewFile" },
+        opts = {
+            ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+            sync_install = false,
+            auto_install = true,
+            highlight = {
+                enable = true,
+                additional_vim_regex_highlighting = false,
+            },
+        },
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
         end,
     },
 
@@ -137,6 +140,38 @@ return {
             require("ibl").setup({
                 indent = {
                     char = "▏",
+                },
+            })
+        end,
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        config = function()
+            -- recommended options for the best experience
+            vim.opt.laststatus = 3 -- make statusline always visible
+            vim.opt.cmdheight = 0 -- hide command line area
+            
+            require("noice").setup({
+                lsp = {
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                },
+                -- you can enable a preset theme here
+                presets = {
+                    bottom_search = true, -- use a classic bottom cmdline for search
+                    command_palette = true, -- position the cmdline and popupmenu together
+                    long_message_to_split = true, -- long messages will be sent to a split
+                    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+                    lsp_doc_border = false, -- add a border to lsp doc highlights
                 },
             })
         end,

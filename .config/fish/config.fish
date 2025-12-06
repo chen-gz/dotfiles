@@ -21,6 +21,7 @@ end
 
 # Aliases
 alias cdd='cd ~/Documents'
+alias vi='nvim'
 
 # Brew update
 brew update &> /dev/null &

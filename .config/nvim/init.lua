@@ -48,21 +48,13 @@ vim.keymap.set("n", "<C-h>", "<C-w>h") -- Move to left window
 vim.keymap.set("n", "<C-j>", "<C-w>j") -- Move to lower window
 vim.keymap.set("n", "<C-k>", "<C-w>k") -- Move to upper window
 vim.keymap.set("n", "<C-l>", "<C-w>l") -- Move to right window
-vim.keymap.set("n", "<C-s>", ":w") -- save current buffer 
+vim.keymap.set("n", "<C-s>", ":w<CR>") -- save current buffer 
 vim.keymap.set("n", "<leader>fp", "<cmd>Telescope projects<CR>", { desc = "Find Project" })
 vim.keymap.set("n", "q", ":quit!<CR>")
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("n", "<leader>tf", ":NvimTreeFindFile<CR>", { desc = "Find current file in NvimTree" })
 
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction = "float" })
-
-function Lazygit_toggle()
-  lazygit:toggle()
-end
-
-vim.keymap.set("n", "<leader>g", Lazygit_toggle, { desc = "Toggle lazygit" })
 
 function Run_just_command()
   local command = vim.fn.input("just ")
