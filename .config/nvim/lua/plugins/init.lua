@@ -315,5 +315,12 @@ return {
             vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
         end,
     },
+    {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- mini.icons 也行
+        opts = {
+            latex = { enabled = true } -- 确保开启 latex 支持
+        },
+    }
 
 }
