@@ -321,6 +321,24 @@ return {
         opts = {
             latex = { enabled = true } -- 确保开启 latex 支持
         },
+    },
+    {
+        "akinsho/bufferline.nvim",
+        version = "*",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        event = "VeryLazy",
+        opts = {
+            options = {
+                mode = "buffers",
+                numbers = "none",
+                diagnostics = "nvim_lsp",
+                diagnostics_indicator = function(count, level, diagnostics_dict, context) return "("..count..")" end,
+                show_buffer_close_icons = "all",
+                show_close_icon = "all",
+                color_icons = true,
+                get_element_icon = function(element) return element.icon end,
+            },
+        },
     }
 
 }
