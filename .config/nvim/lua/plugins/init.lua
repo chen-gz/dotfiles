@@ -57,7 +57,7 @@ return {
         build = ":TSUpdate",
         event = { "BufReadPre", "BufNewFile" },
         opts = {
-            ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+            ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query" },
             sync_install = false,
             auto_install = true,
             highlight = {
@@ -291,11 +291,12 @@ return {
         },
         opts = {
             formatters_by_ft = {
+                cpp = { "clang-format" },
                 markdown = { "prettier" },
                 tex = { "latexindent" },
             },
             format_on_save = function(bufnr)
-                if vim.bo[bufnr].filetype == "markdown" or vim.bo[bufnr].filetype == "tex" then
+                if vim.bo[bufnr].filetype == "markdown" or vim.bo[bufnr].filetype == "tex" or vim.bo[bufnr].filetype == "cpp" then
                     return { timeout_ms = 500, lsp_fallback = true }
                 end
             end,
