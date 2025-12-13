@@ -59,7 +59,7 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         dependencies = { "williamboman/mason.nvim" },
         opts = {
-            ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "latex" },
+            ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query" },
             sync_install = false,
             auto_install = true,
             highlight = {
