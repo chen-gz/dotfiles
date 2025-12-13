@@ -12,6 +12,7 @@ return {
             require("which-key").setup(opts)
             vim.keymap.set("n", "<leader>j", function() vim.diagnostic.goto_next() end, { desc = "Next Diagnostic" })
             vim.keymap.set("n", "<leader>k", function() vim.diagnostic.goto_prev() end, { desc = "Previous Diagnostic" })
+            vim.keymap.set("i", "<C-s>", "<ESC><cmd>w<CR>", { desc = "Save file" })
         end,
         opts = {
             -- your configuration comes here
@@ -56,8 +57,9 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         event = { "BufReadPre", "BufNewFile" },
+        dependencies = { "williamboman/mason.nvim" },
         opts = {
-            ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query" },
+            ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "latex" },
             sync_install = false,
             auto_install = true,
             highlight = {
@@ -256,12 +258,49 @@ return {
         },
     },
 
-    -- LSP Config (简单的占位符，确保 lsp 源有效)
+    -- LSP and completion
     {
         "neovim/nvim-lspconfig",
+        event = "VeryLazy",
+        dependencies = {
+            {
+                "williamboman/mason.nvim",
+                build = ":MasonUpdate",
+                config = function()
+                    require("mason").setup({
+                        ensure_installed = {
+                            "tree-sitter-cli",
+                        },
+                    })
+                end,
+            },
+            "williamboman/mason-lspconfig.nvim",
+        },
         config = function()
-            -- 在这里设置你的 LSP，例如：
-            -- require('lspconfig').lua_ls.setup({})
+            -- Setup language servers.
+            local lspconfig = require("lspconfig")
+            local mason_lspconfig = require("mason-lspconfig")
+
+            mason_lspconfig.setup({
+                ensure_installed = { "lua_ls", "clangd", "rust_analyzer" },
+            })
+
+            local on_attach = function(_, bufnr)
+                local nmap = function(keys, func, desc)
+                    if desc then
+                        desc = "LSP: " .. desc
+                    end
+                    vim.keymap.set("n", keys, func, { buffer = bufnr, noremap = true, silent = true, desc = desc })
+                end
+                nmap("<leader>rn", vim.lsp.buf.rename, "Rename")
+                nmap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
+                nmap("gd", vim.lsp.buf.definition, "Go to Definition")
+                nmap("gr", require("telescope.builtin").lsp_references, "Go to References")
+                nmap("gi", vim.lsp.buf.implementation, "Go to Implementation")
+                nmap("K", vim.lsp.buf.hover, "Hover")
+                nmap("<leader>k", vim.lsp.buf.signature_help, "Signature Help")
+            end
+
         end,
     },
     -- nvim-notify 配置
