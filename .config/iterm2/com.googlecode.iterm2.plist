@@ -26,20 +26,12 @@
 	<string>https://api.openai.com/v1/responses</string>
 	<key>AllowClipboardAccess</key>
 	<true/>
-	<key>AppleAntiAliasingThreshold</key>
-	<integer>1</integer>
-	<key>ApplePressAndHoldEnabled</key>
-	<false/>
-	<key>AppleScrollAnimationEnabled</key>
-	<integer>0</integer>
-	<key>AppleSmoothFixedFontsSizeThreshold</key>
-	<integer>1</integer>
-	<key>AppleWindowTabbingMode</key>
-	<string>manual</string>
 	<key>Default Bookmark Guid</key>
 	<string>4C625993-FA2C-4BE9-8F32-9A55CECD20A1</string>
 	<key>Default Browser Profile Guid</key>
 	<string>78F3BF50-73CE-4AAA-99BF-0EBC7B9A1293</string>
+	<key>ForceKeyboard</key>
+	<false/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
@@ -1258,6 +1250,8 @@
 	</array>
 	<key>SoundForEsc</key>
 	<false/>
+	<key>TmuxSyncClipboard</key>
+	<true/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 </dict>

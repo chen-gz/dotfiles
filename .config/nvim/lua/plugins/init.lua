@@ -1,8 +1,7 @@
 -- lua/plugins/init.lua
-
--- -- completion start qq
 return {
     -- whichkey
+    --
     {
         "folke/which-key.nvim",
         event = "VeryLazy",
@@ -400,6 +399,57 @@ return {
             { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
             { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
         },
-    }
+    },
 
+    -- Flash.nvim
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {},
+        -- stylua: ignore
+        keys = {
+            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+        },
+    },
+    {
+        "milanglacier/minuet-ai.nvim",
+        -- 使用 opts 替代手动 require setup
+        opts = {
+            -- 1. 配置 Ollama 后端 (通过 OpenAI 兼容接口)
+            provider = "openai_compatible",
+            request_timeout = 30000,
+            context_window = 512,
+            num_predict = 32,
+            provider_options = {
+                openai_compatible = {
+                    -- model = "codellama", -- 替换为你本地 ollama list 中的模型名
+                    model = 'qwen2.5-coder:1.5b', -- 换成 1.5b，速度起飞
+                    end_point = 'http://localhost:11434/v1/chat/completions',
+                    api_key = "TERM", -- 必须提供一个占位符字符串
+                    name = "Ollama",
+                    optional = {
+                        num_ctx = 8192,      -- 限制上下文，防止 500 错误
+                        num_predict = 16,   -- 每次只给一小段，体验最轻快
+                    },
+                    stream = false,
+                },
+            },
+            -- 2. 配置 Ghost 模式 (Virtual Text)
+            virtualtext = {
+                auto_trigger_ft = { "*" }, -- 在所有文件类型中开启自动触发
+                keymap = {
+                    accept = "<Tab>",      -- Alt + Shift + a 接受全部
+                    -- accept_line = "<A-a>", -- Alt + a 接受当前行
+                    -- next = "<A-]>",        -- 切换下一个建议
+                    -- prev = "<A-[>",        -- 切换上一个建议
+                    -- dismiss = "<A-e>",     -- 隐藏建议
+                },
+            },
+        },
+    }
 }

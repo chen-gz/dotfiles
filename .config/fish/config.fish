@@ -5,6 +5,7 @@ fish_add_path ~/.local/bin
 fish_add_path ~/.cargo/bin
 fish_add_path /opt/homebrew/bin
 
+fzf --fish | source
 # GPG and SSH agent setup
 set -x GPG_TTY (tty)
 if test (uname) = "Darwin"

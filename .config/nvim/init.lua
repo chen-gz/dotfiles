@@ -1,5 +1,5 @@
 -- init.lua
-
+--
 -- Set leader key to space
 vim.g.mapleader = " "
 
@@ -16,7 +16,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 -- Set up lazy with plugins
 require("lazy").setup("plugins", {
   change_detection = {
